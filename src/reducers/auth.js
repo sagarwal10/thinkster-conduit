@@ -1,6 +1,7 @@
 export default (state = {}, action) => {
   switch (action.type) {
     case 'LOGIN':
+    case 'REGISTER':
       return {
         ...state,
 	inProgress: false,
@@ -19,6 +20,11 @@ export default (state = {}, action) => {
 	...state,
 	[action.key] : action.value
       };
+    case 'LOGIN_PAGE_UNLOADED':
+    case 'REGISTER_PAGE_UNLOADED':
+      return {};
+    default:
+      break;
   }
 
   return state;
