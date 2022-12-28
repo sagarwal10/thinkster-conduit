@@ -1,7 +1,29 @@
 import ArticleList from '../ArticleList';
 import React from 'react';
 import { connect } from 'react-redux';
+import agent from '../../agent'; 
 
+const YourFeedTab = props => {
+  if (props.token) {
+    const clickHandler = ev => {
+      ev.preventDefault();
+      props.onTabClick('feed', agent.Articles.feed());
+    }
+    
+    return (
+      <li className="nav-item">
+        <a href=""
+	   className={props.tab === 'feed' ? 'nav-link active' : 'nav-link'}
+	   onClick={clickHandler}>
+	  Your Feed
+        </a>
+      </li>
+    );
+  }
+  return null;
+};
+
+     
 const mapStateToProps = state => ({
   ...state.articleList
 });
