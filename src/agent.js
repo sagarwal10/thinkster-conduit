@@ -32,6 +32,7 @@ const Articles = {
     requests.get(`/articles?author=${encodeURIComponent(author)}&limit=5`),
   get: slug => 
     requests.get(`/articles/${slug}`),
+  byTag: (tag, page) => requests.get(`/articles?tag=${encodeURIComponent(tag)}&limit=10`),
   del: slug =>
     requests.del(`/articles/${slug}`),
   feed: () => 
@@ -70,10 +71,15 @@ const Auth = {
 	
 }; 
 
+const Tags = {
+  getAll: () => requests.get('/tags')
+};
+
 export default {
   Articles, 
   Auth,
   Comments,
   Profile,
+  Tags,
   setToken: _token => { token = _token }
 };
