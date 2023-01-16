@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import agent from '../../agent';
 import Tags from './Tags';
 
+const Promise = global.Promise; 
+
 const mapStateToProps = state => ({
   ...state.home,
   appName: state.common.appName,
@@ -12,7 +14,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClickTag: (tag, payload) => dispatch({type: 'APPLY_TAG_FILTER', tag,payload}),
+  onClickTag: (tag, payload) => dispatch({type: 'APPLY_TAG_FILTER', tag, payload}),
   onLoad: (tab, payload) =>
     	    dispatch({ type: 'HOME_PAGE_LOADED', tab, payload }),
   onUnload: () => dispatch({  type: 'HOME_PAGE_UNLOADED' })
