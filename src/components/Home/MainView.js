@@ -59,10 +59,17 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  onSetPage: (tab, p) => dispatch({
+    type: 'SET_PAGE',
+    page: p,
+    payload: tab === 'feed' ? agent.Articles.feed(p) : agent.Articles.all(p)
+  }),
   onTabClick: (tab, payload) => dispatch({ type: 'CHANGE_TAB', tab, payload })
 });
 
 const MainView = props => {
+  const onSetPage = page => props.onSetPage(props.tab, page);
+
   return (
     <div className="col-md-9">
       <div className="feed-toggle">
@@ -73,7 +80,10 @@ const MainView = props => {
 	 </ul>
        </div>
 
-       <ArticleList articles={props.articles} />
+       <ArticleList articles={props.articles} 
+		    articlesCount={props.articlesCount}
+		    currentPage={props.currentPage}
+		    onSetPage={onSetPage} />
      </div>);
 }
 
