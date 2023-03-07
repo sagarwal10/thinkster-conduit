@@ -35,7 +35,7 @@ class Editor extends React.Component {
     const updateFieldEvent = 
       key => ev => this.props.onUpdateField(key, ev.target.value);
     this.changeTitle = updateFieldEvent('title');
-    this.changeDescription = updateFieldEvent('descriptipn');
+    this.changeDescription = updateFieldEvent('description');
     this.changeBody = updateFieldEvent('body');
     this.changeTagInput = updateFieldEvent('tagInput');
 
@@ -81,7 +81,7 @@ class Editor extends React.Component {
    * To work around this, we need the componentWillReceiveProps() hook
    */
   componentWillReceiveProps(nextProps) {
-    if (this.props.parms.slug !== nextParams.params.slug) {
+    if (this.props.parms.slug !== nextProps.params.slug) {
       if (nextProps.params.slug) {
         this.props.onUnload();
         return this.props.onLoad(agent.Articles.get(this.props.params.slug));
@@ -99,6 +99,67 @@ class Editor extends React.Component {
 
   componentWillUnmount() {
     this.props.onUnload();
+  }
+
+  render() {
+    return (
+      <div className="editor-page">
+        <div className="container page">
+          <div className="row">
+	    <div className="col-md-10 offset-md-1 col-xs-12">
+              <ListErrors errors={this.props.errors}></ListErrors>
+
+	      <form>
+	        <fieldset>
+		  <fieldset className="form-group">
+		    <input className="form-control form-control-lg"
+			   type="text" placeholder="Article Title"
+			   value={this.props.title}
+			   onChange={this.changeTitle} />
+		  </fieldset>
+	  
+		  <fieldset className="form-group">
+		    <input className="form-control"
+			   type="text" 
+			   placeholder="Whats this article about?"
+			   value={this.props.description}
+			   onChange={this.changeDescription} />
+		  </fieldset>
+
+		  <fieldset className="form-group">
+		    <input className="form-control"
+			   type="text"
+			   placeholder="Enter tags"
+			   value={this.props.tagInput}
+			   onChange={this.changeTagInput}
+			   onKeyUp={this.watchForEnter} />
+		    <div className="tag-list">
+		      {
+			(this.props.tagList || []).map(tag => {
+			  return (
+			    <span className="tag-default tag-pill" key={tag}>
+			      <i className="ion-close-round"
+				 onClick={this.removeTagHandler(tag)} />
+			      {tag}
+			    </span>
+			  );
+			})
+		      }
+		    </div>
+		  </fieldset>
+
+		  <button className="btn btn-lg pull-xs-right btn-primary"
+			  type="button" disabled={this.props.inProgress}
+			  onClick={this.submitForm}>
+		    Publish Article
+		  </button>
+		</fieldset>
+              </form>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    );
   }
 }
 
