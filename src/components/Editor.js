@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: 'ARTICLE_SUBMITTED', payload }),
   onUnload: payload =>
     dispatch({ type: 'EDITOR_PAGE_UNLOADED' }),
-  OnUpdateField: (key, value) =>
+  onUpdateField: (key, value) =>
     dispatch({ type: 'UPDATE_FIELD_EDITOR', key, value })
 }); 
 
