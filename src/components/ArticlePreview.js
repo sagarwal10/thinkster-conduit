@@ -14,7 +14,7 @@ const ArticlePreview = props => {
 	<div className="info">
 	  <Link to={`@${article.author.username}`} className="author">
 	    {article.author.username}
-       i  </Link>
+          </Link>
 	  <span className="date">
 	    {new Date(article.createdAt).toDateString()}
 	  </span>

@@ -5,7 +5,7 @@ export default (state = {}, action) => {
   case 'ARTICLE_PAGE_LOADED':
     return {
       ...state,
-      articles: action.payload[0].articles,
+      article: action.payload[0].article,
       comments: action.payload[1].comments
     };
     break;

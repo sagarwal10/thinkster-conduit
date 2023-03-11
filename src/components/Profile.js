@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
     type: 'UNFOLLOW_USER',
     payload: agent.Profile.unfollow(username)
   }),
-  omUnload: () => dispatch({ type: 'PROFILE_PAGE_UNLOADED' })
+  onUnload: () => dispatch({ type: 'PROFILE_PAGE_UNLOADED' })
 }); 
 
 const EditProfileSettings = props => {

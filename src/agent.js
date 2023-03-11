@@ -40,7 +40,7 @@ const Articles = {
   del: slug =>
     requests.del(`/articles/${slug}`),
   feed: page => 
-    requests.get('/articles/feed?${limit(10, page)}'),
+    requests.get(`/articles/feed?${limit(10, page)}`),
   favoritedBy: (author, page) =>
     requests.get(`/articles?favorited=${encode(author)}&${limit(10, page)}`),
   update: article =>

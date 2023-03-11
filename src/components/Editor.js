@@ -81,7 +81,7 @@ class Editor extends React.Component {
    * To work around this, we need the componentWillReceiveProps() hook
    */
   componentWillReceiveProps(nextProps) {
-    if (this.props.parms.slug !== nextProps.params.slug) {
+    if (this.props.params.slug !== nextProps.params.slug) {
       if (nextProps.params.slug) {
         this.props.onUnload();
         return this.props.onLoad(agent.Articles.get(this.props.params.slug));
@@ -125,6 +125,14 @@ class Editor extends React.Component {
 			   value={this.props.description}
 			   onChange={this.changeDescription} />
 		  </fieldset>
+
+	          <fieldset className="form-group">
+		    <textarea className="form-control"
+			   rows="8" 
+			   placeholder="Write your article (in markdown)"
+			   value={this.props.body}
+			   onChange={this.changeBody} />
+		  </fieldset> 
 
 		  <fieldset className="form-group">
 		    <input className="form-control"
