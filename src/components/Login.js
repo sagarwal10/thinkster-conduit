@@ -57,12 +57,12 @@ class Login extends React.Component {
 		    <fieldset className="form-group">
 		      <input className="form-control form-control-lg"
 			     type="email" placeholder="Email" 
-			     value={email} onChange={this.changeEmail} />
+			     value={email || ''} onChange={this.changeEmail} />
 		    </fieldset>
 		    <fieldset className="form-group">
 		      <input className="form-control form-control-lg"
 			     type="password" placeholder="Password" 
-			     value={password} onChange={this.changePassword} />
+			     value={password || ''} onChange={this.changePassword} />
 		    </fieldset>
 		    <button className="btn btn-lg btn-primary pull-xs-right"
 			    disabled={this.props.inProgress} 

@@ -39,6 +39,8 @@ export default (state={}, action) => {
       ...state,
       [action.key] : action.value 
     };
+  default:
+    break;
   }
 
   return state;

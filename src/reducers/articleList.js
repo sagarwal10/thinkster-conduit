@@ -1,4 +1,3 @@
-'use strict';
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -47,6 +46,8 @@ export default (state = {}, action) => {
   case 'PROFILE_PAGE_UNLOADED':
   case 'PROFILE_FAVORITES_PAGE_UNLOADED':
     return {};
+  default: 
+    break;
   }
 
   return state;

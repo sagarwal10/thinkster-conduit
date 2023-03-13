@@ -13,6 +13,8 @@ export default (state = {}, action) => {
       return {
         ...action.payload.profile
       };
+    default:
+      break;
    }
 
    return state;

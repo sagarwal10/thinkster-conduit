@@ -80,21 +80,21 @@ class SettingsForm extends React.Component {
 	  <fieldset className="form-group">
 	    <input className="form-control form-control-lg"
 	           type="text" placeholder="Username"
-		   value={this.state.username}
+		   value={this.state.username || ''}
 		   onChange={this.updateState('username')} />
 	  </fieldset>
 
 	  <fieldset className="form-group">
 	    <textarea className="form-control form-control-lg"
 	 	      rows="8" placeholder="Short bio about you"
-		      value={this.state.bio}
+		      value={this.state.bio || ''}
 		      onChange={this.updateState('bio')} />
 	  </fieldset>
 
 	  <fieldset className="form-group">
 	    <input className="form-control form-control-lg"
 		   type="email" placeholder="email"
-		   value={this.state.email}
+		   value={this.state.email || ""}
 		   onChange={this.updateState('email')} />
 	  </fieldset>
 
