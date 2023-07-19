@@ -16,6 +16,7 @@ import ProfileFavorites from './components/ProfileFavorites';
 ReactDOM.render((
   <Provider store={store}>
   <Router history={hashHistory}>
+
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="login" component={Login} />
@@ -27,6 +28,7 @@ ReactDOM.render((
       <Route path="editor" component={Editor} />
       <Route path="editor/:slug" component={Editor} />
     </Route>
+
   </Router>
   </Provider>
 ), document.getElementById('root'));
